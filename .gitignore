@@ -1,0 +1,20 @@
+# 数据文件（体积大，本地保留）
+titan_data/*
+!titan_data/today_picks_*.json
+!titan_data/top5_changes.json
+!titan_data/top5_snapshots.json
+!titan_data/daily_backtest.csv
+
+# 临时脚本与中间产物
+temp/
+*.log
+*.tmp
+
+# 其它大文件 / 缓存
+__pycache__/
+*.pyc
+.venv/
+venv/
+.vscode/
+.idea/
+node_modules/
