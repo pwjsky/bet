@@ -28,7 +28,7 @@ cd bet
 
 pip install -r requirements.txt
 
-# 历史数据（约 11.6 MB，解压后 84 MB）
+# 历史数据 2026-01 ~ 2026-10（约 14.1 MB，解压后约 82 MB）
 curl -L -o data.zip https://github.com/pwjsky/bet/releases/download/data-2026.10/bet_data.zip
 python -c "import zipfile; zipfile.ZipFile('data.zip').extractall('titan_data')"
 
@@ -67,14 +67,16 @@ git add -A && git commit -m "picks 20261021" && git push
 
 ## 数据文件
 
-放在 `titan_data/`，**不进 git**（体积大）：
+放在 `titan_data/`，**不进 git**（体积大），已覆盖 2026-01-01 ~ 2026-10-16：
 
 | 文件 | 大小 | 用途 |
 |---|---|---|
-| `listings.json` | 42 MB | 赛程、比分、盘口列表 |
-| `euro.json` | 21 MB | 历史欧赔，训练 `p_move` 模型 |
-| `water.json` | 21 MB | 历史水位，结算与校准 |
+| `listings.json` | 40.5 MB | 赛程、比分、盘口列表，157156 场 |
+| `euro.json` | 22.9 MB | 历史欧赔，训练 `p_move` 模型，79092 场 |
+| `water.json` | 19.1 MB | 历史水位，结算与校准，54473 场 |
 | `calibration.json` | < 1 MB | 保序校准表 |
+
+1/2 月为全量采集（25289 场欧赔），3-10 月历史上只回补了有亚盘列表的场次。水位方面 1/2 月只补了 727 场低门槛段，其余月份完整。
 
 进 git 的只有：`today_picks_*.json`（每日出单记录）、`top5_changes.json`、`top5_snapshots.json`、`daily_backtest.csv`。
 
